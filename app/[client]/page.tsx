@@ -1,34 +1,20 @@
-import { notFound } from 'next/navigation';
+import { notFound } from 'next/navigation'
+import { CostCalculator } from '@/components/cost-calculator'
 
 export default async function ClientPage({ params }: { params: { client: string } }) {
-  const { client } = params;
+  const { client } = params
 
   try {
-    const config = (await import(`@/configs/${client}.config`)).default;
-    const data = (await import(`@/data/${client}.json`)).default;
-
-    const result = config.formula(data.input);
+    const config = (await import(`@/configs/${client}.config`)).default
+    const data = (await import(`@/data/${client}.json`)).default
 
     return (
-      <main className="p-8">
-        <h1 className="text-3xl font-bold mb-4">{config.clientName}</h1>
-        <section>
-          <h2 className="text-xl font-semibold mt-4">Results</h2>
-          <pre>{JSON.stringify(data.results, null, 2)}</pre>
-
-          <h2 className="text-xl font-semibold mt-4">Methodology</h2>
-          <p>{data.methodology}</p>
-
-          <h2 className="text-xl font-semibold mt-4">Calculated Output</h2>
-          <p>Result: {result}</p>
-
-          <h2 className="text-xl font-semibold mt-4">Limitations</h2>
-          <p>{data.limitations}</p>
-        </section>
+      <main className="min-h-screen bg-white">
+        <CostCalculator config={config} data={data} />
       </main>
-    );
+    )
   } catch (err) {
-    console.error("Client page error:", err);
-    notFound();
+    console.error("Client page error:", err)
+    notFound()
   }
 }
