@@ -1,6 +1,5 @@
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
 
-// Dynamic import of client config and data using Vite/Next.js magic
 export default async function ClientPage({ params }: { params: { client: string } }) {
   const { client } = params;
 
@@ -29,7 +28,7 @@ export default async function ClientPage({ params }: { params: { client: string 
       </main>
     );
   } catch (err) {
-    console.error("Error loading client data/config:", err);
+    console.error("Client page error:", err);
     notFound();
   }
 }
