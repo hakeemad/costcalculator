@@ -55,3 +55,4 @@ export default async function ClientPage({ params }: { params: { client: string 
     notFound();
   }
 }
+
