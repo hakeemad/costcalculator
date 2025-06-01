@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    /* Chart colors */
+    --chart-1: 142.1 76.2% 36.3%;
+    --chart-2: 355.7 100% 54.7%;
+    --chart-3: 47.9 95.8% 53.1%;
+    --chart-4: 262.1 83.3% 57.8%;
+    --chart-5: 176.5 69.8% 41.2%;
+    --chart-6: 19.6 89.3% 54.3%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Print styles */
+@media print {
+  /* Hide everything except the print container */
+  body * {
+    visibility: hidden;
+  }
+
+  .print-container,
+  .print-container * {
+    visibility: visible;
+  }
+
+  .print-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    color: black;
+    font-size: 12pt;
+    line-height: 1.4;
+    padding: 20px;
+  }
+
+  /* Header styles */
+  .print-header {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+  }
+
+  .print-header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .print-logo {
+    max-height: 60px;
+    max-width: 120px;
+  }
+
+  .print-title {
+    font-size: 24pt;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+  }
+
+  .print-subtitle {
+    font-size: 14pt;
+    color: #555;
+    margin: 0;
+  }
+
+  /* Section styles */
+  .print-section {
+    margin-bottom: 25px;
+    page-break-inside: avoid;
+  }
+
+  .print-section-title {
+    font-size: 16pt;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+  }
+
+  /* Metrics grid */
+  .print-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin: 15px 0;
+  }
+
+  .print-metric {
+    border: 1px solid #ddd;
+    padding: 10px;
+    background-color: #f9f9f9;
+  }
+
+  .print-metric-label {
+    display: block;
+    font-size: 10pt;
+    color: #555;
+    margin-bottom: 5px;
+  }
+
+  .print-metric-value {
+    display: block;
+    font-size: 14pt;
+    font-weight: bold;
+  }
+
+  /* Table styles */
+  .print-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+  }
+
+  .print-table-row {
+    border-bottom: 1px solid #ddd;
+  }
+
+  .print-table-header {
+    background-color: #f5f5f5;
+    font-weight: bold;
+  }
+
+  .print-table-cell {
+    padding: 8px;
+    text-align: left;
+  }
+
+  .print-table-row.print-table-header .print-table-cell {
+    font-weight: bold;
+  }
+
+  .print-table-row.print-table-total {
+    font-weight: bold;
+    background-color: #f0f7f0;
+  }
+
+  /* Conclusion */
+  .print-conclusion {
+    font-style: italic;
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f0f7f0;
+    border-left: 4px solid #4caf50;
+  }
+
+  /* Footer */
+  .print-footer {
+    margin-top: 30px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 9pt;
+    color: #777;
+    text-align: center;
+  }
+
+  /* Make the print container take up the full page */
+  .print-container {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Force page breaks where needed */
+  .print-section {
+    page-break-inside: avoid;
+  }
+
+  /* Ensure tables don't break across pages */
+  .print-table {
+    page-break-inside: avoid;
+  }
+
+  /* Display table as grid for better layout */
+  .print-table {
+    display: table;
+    width: 100%;
+  }
+
+  .print-table-row {
+    display: table-row;
+  }
+
+  .print-table-cell {
+    display: table-cell;
+    width: 33.33%;
+  }
+}

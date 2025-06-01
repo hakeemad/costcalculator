@@ -1,0 +1,6 @@
+{
+  "input": { "value": 10 },
+  "results": { "output": "Device usage improved detection rates" },
+  "methodology": "Evaluation study across 3 UK hospitals, 2024",
+  "limitations": "Single-blind; limited generalizability"
+}
